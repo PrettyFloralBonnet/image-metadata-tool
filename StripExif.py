@@ -6,17 +6,17 @@ import exifread
 from PIL import Image
 
 
-def save_image_copy(path):
+def create_image_copy(path):
     file_name = os.path.splitext(path)[0]  # TODO: store this in an instance attr
 
     try:
-        og_image = Image.open(path)
+        original_image = Image.open(path)
     except IOError:
         print(f"The file {os.path.basename(path)} is not a valid image.")
     
-    og_image_data = og_image.getdata()
+    og_image_data = original_image.getdata()
 
-    new_image = Image.new(og_image.mode, og_image.size)
+    new_image = Image.new(original_image.mode, original_image.size)
     new_image.putdata(og_image_data)
 
     output_dir = os.path.join(os.getcwd(), "output")
@@ -71,7 +71,7 @@ def process_image(path):
     file_name = os.path.splitext(path)[0]  # TODO: retrieve it from an instance attr
 
     print(getGPS(path))
-    save_image_copy(path)
+    create_image_copy(path)
     print(getGPS(os.path.join("output", f"{file_name}_stripped.JPEG")))
 
 if __name__ == "__main__":
