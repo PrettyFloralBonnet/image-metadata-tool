@@ -6,7 +6,7 @@ import exifread
 from PIL import Image
 
 
-def create_image_copy(path):
+def strip_metadata(path):
     file_name = os.path.splitext(path)[0]  # TODO: store this in an instance attr
 
     try:
@@ -71,7 +71,7 @@ def process_image(path):
     file_name = os.path.splitext(path)[0]  # TODO: retrieve it from an instance attr
 
     print(getGPS(path))
-    create_image_copy(path)
+    strip_metadata(path)
     print(getGPS(os.path.join("output", f"{file_name}_stripped.JPEG")))
 
 if __name__ == "__main__":
