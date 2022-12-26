@@ -13,6 +13,8 @@ parser.add_argument("-l", "--list", action="store_true")
 parser.add_argument("-g", "--gps", action="store_true")
 parser.add_argument("-s", "--strip", action="store_true")
 
+args = parser.parse_args()
+
 if __name__ == "__main__":
     # WIP
     image = MetadataImage(sys.argv[1])
