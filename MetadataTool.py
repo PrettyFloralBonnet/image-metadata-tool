@@ -21,7 +21,8 @@ class MetadataTool:
 
         if os.path.isdir(self._input_path):
             # https://stackoverflow.com/questions/71112986/retrieve-a-list-of-supported-read-file-extensions-formats
-            pass
+            for file in os.listdir(self._input_path):
+                self.images_to_process.append(file)
 
 
 if __name__ == "__main__":
